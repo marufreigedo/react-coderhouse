@@ -19,7 +19,7 @@ function NavBar() {
       <Container>
         <Navbar.Brand>
           <Image src="src/assets/image/amber.png" alt="" width={100} />
-          AMBER
+          
         </Navbar.Brand>
         <Nav className="me-auto">
           {categories.map((category, index) => (
