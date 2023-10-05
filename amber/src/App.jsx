@@ -14,7 +14,6 @@ function App() {
         <CartWidget />
         <ItemListContainer greeting="Descubre nuestras increíbles tazas" />
       </Container>
-      {/* Agrega otros componentes y contenido aquí */}
     </div>
   );
 }
