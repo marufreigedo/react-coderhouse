@@ -18,7 +18,7 @@ function NavBar() {
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>
-          <Image src="amber/src/assets/image/amber.png" alt="" width={100} />
+          <Image src="src/assets/image/amber.png" alt="" width={100} />
           AMBER
         </Navbar.Brand>
         <Nav className="me-auto">
