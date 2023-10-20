@@ -1,0 +1,80 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .navbar {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  
+  /* Estilos para la tarjeta de productos */
+  .card {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h1 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .card p {
+    color: #666;
+  }
+  
+  /* Estilos para botones */
+  button {
+    background-color: rgb(251, 97, 148);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para el carrito */
+  .cart-button {
+    display: flex;
+    align-items: center;
+    background-color: rgb(251, 97, 148);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .cart-button span {
+    margin-left: 0.5rem;
+  }
+  
+  /* Estilos para los enlaces de navegación */
+  a {
+    text-decoration: none;
+    color: #fb619c;
+  }
+  
+  /* Estilos para el botón "Agregar al carrito" */
+  .add-to-cart-button {
+    background-color: rgb(251, 97, 148);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }

@@ -1,22 +1,27 @@
-
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/navBar/navBar';
-import CartWidget from './components/cartWidget/cartWidget';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
-import { BrowserRouter as Router } from 'react-router-dom'; // Importa BrowserRouter
+import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
+import CartPage from './components/cartPage/cartPage';
+import CartWidget from './components/cartWidget/cartWidget';
+import Cart from './components/cart/cart'; 
 
 function App() {
+  const [cart, setCart] = useState([]);
+  const [itemCount, setItemCount] = useState(0);
+
   return (
-    <Router> {/* Encierra toda tu aplicación con BrowserRouter */}
-      <div>
-        <NavBar />
-        <Container>
-          <CartWidget />
-          <ItemListContainer greeting="Descubre nuestras increíbles tazas" />
-        </Container>
-      </div>
-    </Router>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<ItemListContainer cart={cart} setCart={setCart} greeting="¡Bienvenido!" />} />
+        <Route path="/category/:categoryid" element={<ItemListContainer cart={cart} setCart={setCart} />} />
+        <Route path="/item/:itemid" element={<ItemDetailContainer cart={cart} setCart={setCart} />} />
+        <Route path="/cart" element={<Cart cart={cart} />} /> 
+      </Routes>
+      <CartWidget itemCount={itemCount} />
+    </div>
   );
 }
 

@@ -1,12 +1,11 @@
-import { FaShoppingCart } from 'react-icons/fa'; // Ícono de carrito de compras
-import React from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
+import React, { useState } from 'react';
 
 function CartWidget() {
-  const itemCount = 3; // Número fijo de elementos en el carrito 
+  const [itemCount, setItemCount] = useState(0);
 
   const handleClick = () => {
-   
-    alert('Dirigiendote al carrito'); 
+    alert('Dirigiéndote al carrito');
   };
 
   return (
