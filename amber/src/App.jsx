@@ -9,7 +9,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [itemCount, setItemCount] = useState(0);
   const [products, setProducts] = useState([
-    // Tus productos...
+    
     
     {
       id: 1,
@@ -57,18 +57,18 @@ function App() {
 
   function agregarAlCarrito(producto) {
     setCart(carritoActual => [...carritoActual, producto]);
-    setItemCount(itemCount + 1); // Incrementa itemCount cuando agregas un producto
+    setItemCount(itemCount + 1); 
   }
 
   function eliminarDelCarrito(idProducto) {
     setCart(carritoActual => {
       const productoEnCarrito = carritoActual.find(producto => producto.id === idProducto);
       if (productoEnCarrito.quantity > 1) {
-        // Disminuir la cantidad si hay más de uno
+        
         productoEnCarrito.quantity -= 1;
         return [...carritoActual];
       } else {
-        // Eliminar el producto del carrito si solo queda uno
+        
         return carritoActual.filter(producto => producto.id !== idProducto);
       }
     });
