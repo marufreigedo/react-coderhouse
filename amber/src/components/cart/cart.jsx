@@ -1,10 +1,20 @@
 import React from 'react';
 import './cart.css';
 
-
 function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
   
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    const price = Number(item.price);
+    const quantity = Number(item.quantity);
+  
+    if (isNaN(price) || isNaN(quantity)) {
+      console.error(`Invalid item in cart: `, item);
+      return sum;
+    }
+  
+    console.log(`Item price: ${price}, quantity: ${quantity}`);
+    return sum + price * quantity;
+  }, 0);
 
   return (
     <div className="cart">
@@ -23,6 +33,5 @@ function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
     </div>
   );
 }
-
 
 export default Cart;
