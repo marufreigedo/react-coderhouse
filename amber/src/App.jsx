@@ -54,23 +54,22 @@ function App() {
     }
   ]);
   
-function agregarAlCarrito(producto) {
-  setCart((carritoActual) => {
-    
-    const productoEnCarrito = carritoActual.find((item) => item.id === producto.id);
-
-    if (productoEnCarrito) {
+  function agregarAlCarrito(producto) {
+    setCart((carritoActual) => {
+      const productoEnCarrito = carritoActual.find((item) => item.id === producto.id);
+  
+      if (productoEnCarrito) {
       
-      productoEnCarrito.quantity += 1;
-    } else {
-   
-      carritoActual.push({ ...producto, quantity: 1 });
-    }
-
-    
-    return [...carritoActual];
-  });
-}
+        productoEnCarrito.quantity += 1;
+      } else {
+        
+        carritoActual.push({ ...producto, quantity: 1 });
+      }
+  
+     
+      return [...carritoActual];
+    });
+  }
   
 function eliminarDelCarrito(idProducto) {
   setCart((carritoActual) => {
@@ -91,18 +90,17 @@ function eliminarDelCarrito(idProducto) {
     return [...carritoActual];
   });
 }
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path="/category/:categoryid" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path="/item/:itemid" element={<ItemDetailContainer cart={cart} agregarAlCarrito={agregarAlCarrito} />} />
-        
-        <Route path="/cart" element={<Cart cart={cart} eliminarDelCarrito={eliminarDelCarrito} />} />
-      </Routes>
-      <CartWidget itemCount={itemCount} />
-    </div>
-  );
+return (
+  <div>
+    <Routes>
+      <Route path="/" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
+      <Route path="/category/:categoryid" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
+      <Route path="/item/:itemid" element={<ItemDetailContainer cart={cart} agregarAlCarrito={agregarAlCarrito} />} />
+      <Route path="/cart" element={<Cart cart={cart} eliminarDelCarrito={eliminarDelCarrito} />} />
+    </Routes>
+    <CartWidget itemCount={itemCount} /> 
+  </div>
+);
 }
 
 export default App;

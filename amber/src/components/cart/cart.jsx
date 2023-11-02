@@ -3,18 +3,10 @@ import './cart.css';
 
 function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
   
-  const total = cart.reduce((sum, item) => {
-    const price = Number(item.price);
-    const quantity = Number(item.quantity);
+  const totalProductos = cart.reduce((total, producto) => total + producto.quantity, 0);
+
   
-    if (isNaN(price) || isNaN(quantity)) {
-      console.error(`Invalid item in cart: `, item);
-      return sum;
-    }
-  
-    console.log(`Item price: ${price}, quantity: ${quantity}`);
-    return sum + price * quantity;
-  }, 0);
+  const totalPrecio = cart.reduce((total, producto) => total + producto.price * producto.quantity, 0);
 
   return (
     <div className="cart">
@@ -29,7 +21,8 @@ function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
           <button onClick={() => eliminarDelCarrito(item.id)}>Eliminar uno</button>
         </div>
       ))}
-      <h2>Total: ${total}</h2>
+      <h2>Total de productos: {totalProductos}</h2>
+      <h2>Total a pagar: ${totalPrecio}</h2>
     </div>
   );
 }
