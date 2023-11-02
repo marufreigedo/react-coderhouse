@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import './itemList.css'; 
 
 function ItemList({ products, onAddToCart }) {
   return (

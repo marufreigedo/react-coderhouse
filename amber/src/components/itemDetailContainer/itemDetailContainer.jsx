@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ItemDetailContainer({ cart, setCart }) {
+function ItemDetailContainer({ cart , agregarAlCarrito }) {
   const { itemid } = useParams();
   const [product, setProduct] = useState(null);
 
- 
-  useEffect(() => {
-    const fakeAPIResponse = {
-      id: itemid,
-      title: 'Nombre del Producto',
-      description: 'Descripción del producto',
-      price: 19.99,
-    };
-
-    setProduct(fakeAPIResponse);
-  }, [itemid]);
-
   const handleAddToCart = () => {
     if (product) {
-      setCart([...cart, product]);
+      agregarAlCarrito(product.id);
       alert('Producto agregado al carrito');
     }
   };
-
   return (
     <div>
       {product ? (
@@ -31,7 +18,7 @@ function ItemDetailContainer({ cart, setCart }) {
           <h1>{product.title}</h1>
           <p>{product.description}</p>
           <p>Precio: ${product.price}</p>
-          <button onClick={handleAddToCart}>Agregar al carrito</button>
+         
         </div>
       ) : (
         <p>Cargando detalles del producto...</p>

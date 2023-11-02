@@ -8,28 +8,12 @@ import CartPage from '../cartPage/cartPage';
 import CartWidget from '../cartWidget/cartWidget';
 import { Card, Button } from 'react-bootstrap';
 
-function CategoryFilter({ categories, onCategorySelect }) {
-  return (
-    <div>
-      <h2>Categorias</h2>
-      <ul>
-        {categories.map((category) => (
-          <li key={category}>
-            <button onClick={() => onCategorySelect(category)}>
-              {category}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
-function ItemListContainer() {
-  const [cart, setCart] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
+
+function ItemListContainer({ cart, agregarAlCarrito }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [products, setProducts] = useState([
+
     {
       id: 1,
       title: 'Taza de El grinch',
@@ -38,6 +22,7 @@ function ItemListContainer() {
       category: 'Tazas de ceramica',
       image: 'https://i.pinimg.com/564x/96/72/1f/96721fefea99d090530cae6364910aa1.jpg'
       },
+      
     {
       id: 2,
       title: 'Taza de Mickey Mouse',
@@ -73,41 +58,23 @@ function ItemListContainer() {
   ]);
 
   const handleAddToCart = (product) => {
-    const existingProduct = cart.find(item => item.id === product.id);
-    
-    if (existingProduct) {
-      // Increase quantity of existing product
-      setCart(cart.map(item => 
-        item.id === product.id ? {...item, quantity: item.quantity + 1} : item
-      ));
-    } else {
-      // Add new product to cart
-      setCart([...cart, {...product, quantity: 1}]);
-    }
-  
-    setItemCount(itemCount + 1);
+    agregarAlCarrito(product);
   }
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
   }
 
-  const categories = ['Todos los productos', 'Tazas de ceramica', 'Tazas de vidrio', 'Tazas de Porcelana'];
-
   const filteredProducts = selectedCategory === 'Todos los productos' ? products : products.filter((product) => product.category === selectedCategory);
 
   return (
     <div>
-      <NavBar />
-      <CategoryFilter categories={categories} onCategorySelect={handleCategorySelect} />
       <Routes>
         <Route path="/" element={<ItemList products={filteredProducts} onAddToCart={handleAddToCart} />} />
         <Route path="/product/:id" element={<ItemDetail />} />
-        <Route path="/cart" element={<CartPage cart={cart} itemCount={itemCount} />} />
+        <Route path="/cart" element={<CartPage cart={cart} />} />
       </Routes>
-      <CartWidget itemCount={itemCount} />
     </div>
   );
 }
-
 export default ItemListContainer;

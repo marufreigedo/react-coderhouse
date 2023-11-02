@@ -1,11 +1,11 @@
 import { FaShoppingCart } from 'react-icons/fa';
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function CartWidget() {
-  const [itemCount, setItemCount] = useState(0);
+function CartWidget({ itemCount }) {
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    alert('Dirigiéndote al carrito');
+    navigate('/cart'); 
   };
 
   return (
