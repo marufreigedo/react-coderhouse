@@ -5,12 +5,19 @@ function ItemDetailContainer({ cart , agregarAlCarrito }) {
   const { itemid } = useParams();
   const [product, setProduct] = useState(null);
 
+
+  useEffect(() => {
+    const product = cart.find((item) => item.id === Number(itemid));
+    setProduct(product);
+  }, [itemid, cart]);
+
   const handleAddToCart = () => {
     if (product) {
-      agregarAlCarrito(product.id);
+      agregarAlCarrito(product);
       alert('Producto agregado al carrito');
     }
   };
+
   return (
     <div>
       {product ? (
@@ -18,7 +25,7 @@ function ItemDetailContainer({ cart , agregarAlCarrito }) {
           <h1>{product.title}</h1>
           <p>{product.description}</p>
           <p>Precio: ${product.price}</p>
-         
+          <p>Detalles: {product.details}</p>
         </div>
       ) : (
         <p>Cargando detalles del producto...</p>

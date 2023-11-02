@@ -6,6 +6,7 @@ import ItemList from '../itemList/itemList';
 import ItemDetail from '../itemDetailContainer/itemDetailContainer';
 import CartPage from '../cartPage/cartPage';
 import CartWidget from '../cartWidget/cartWidget';
+import Banner from '../banner/banner';
 import { Card, Button } from 'react-bootstrap';
 
 
@@ -28,7 +29,12 @@ function ItemListContainer({ products, agregarAlCarrito }) {
     <div>
       <NavBar onCategorySelect={handleCategorySelect} />
       <Routes>
-        <Route path="/" element={<ItemList products={filteredProducts} onAddToCart={handleAddToCart} />} />
+        <Route path="/" element={
+          <>
+            <Banner /> 
+            <ItemList products={filteredProducts} onAddToCart={handleAddToCart} />
+          </>
+        } />
         <Route path="/product/:id" element={<ItemDetail />} />
         <Route path="/cart" element={<CartPage cart={cart} />} />
       </Routes>
@@ -36,5 +42,6 @@ function ItemListContainer({ products, agregarAlCarrito }) {
     </div>
   );
 }
+
 
 export default ItemListContainer;
