@@ -54,26 +54,43 @@ function App() {
     }
   ]);
   
+function agregarAlCarrito(producto) {
+  setCart((carritoActual) => {
+    
+    const productoEnCarrito = carritoActual.find((item) => item.id === producto.id);
 
-  function agregarAlCarrito(producto) {
-    setCart(carritoActual => [...carritoActual, producto]);
-    setItemCount(itemCount + 1); 
-  }
+    if (productoEnCarrito) {
+      
+      productoEnCarrito.quantity += 1;
+    } else {
+   
+      carritoActual.push({ ...producto, quantity: 1 });
+    }
 
-  function eliminarDelCarrito(idProducto) {
-    setCart(carritoActual => {
-      const productoEnCarrito = carritoActual.find(producto => producto.id === idProducto);
+    
+    return [...carritoActual];
+  });
+}
+  
+function eliminarDelCarrito(idProducto) {
+  setCart((carritoActual) => {
+    
+    const productoEnCarrito = carritoActual.find((item) => item.id === idProducto);
+
+    if (productoEnCarrito) {
+      
       if (productoEnCarrito.quantity > 1) {
-        
         productoEnCarrito.quantity -= 1;
-        return [...carritoActual];
       } else {
         
-        return carritoActual.filter(producto => producto.id !== idProducto);
+        return carritoActual.filter((item) => item.id !== idProducto);
       }
-    });
-  }
+    }
 
+  
+    return [...carritoActual];
+  });
+}
   return (
     <div>
       <Routes>
