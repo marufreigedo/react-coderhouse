@@ -90,8 +90,10 @@ return (
   <div>
     <Routes>
       <Route path="/" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
+
+      <Route path="/item/:itemid" element={<ItemDetailContainer products={products} />} />
       <Route path="/category/:categoryid" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
-      <Route path="/item/:itemid" element={<ItemDetailContainer cart={cart} agregarAlCarrito={agregarAlCarrito} />} />
+      
       <Route path="/cart" element={<Cart cart={cart} eliminarDelCarrito={eliminarDelCarrito} />} />
     </Routes>
     <CartWidget itemCount={itemCount} /> 

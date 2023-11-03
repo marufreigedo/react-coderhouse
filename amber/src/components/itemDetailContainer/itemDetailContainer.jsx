@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function ItemDetailContainer({ cart , agregarAlCarrito }) {
+import './itemDetailContainer.css';
+
+
+function ItemDetailContainer({ products }) {
   const { itemid } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    const product = cart.find((item) => item.id === Number(itemid));
-    setProduct(product);
-  }, [itemid, cart]);
-
-  const handleAddToCart = () => {
-    if (product) {
-      agregarAlCarrito(product);
-      alert('Producto agregado al carrito');
-    }
-  };
+    const productMatch = products.find((item) => item.id === Number(itemid));
+    setProduct(productMatch);
+  }, [itemid, products]);
 
   return (
     <div>
@@ -26,8 +22,11 @@ function ItemDetailContainer({ cart , agregarAlCarrito }) {
           <p>Precio: ${product.price}</p>
           <p>Detalles: {product.details}</p>
         </div>
-      ) : null }
+      ) : (
+        <p>Producto no encontrado</p>
+      )}
     </div>
   );
 }
+
 export default ItemDetailContainer;

@@ -2,7 +2,7 @@ import React from 'react';
 import './cart.css';
 
 function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
-  
+
   const totalProductos = cart.reduce((total, producto) => total + producto.quantity, 0);
 
   
@@ -19,6 +19,7 @@ function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
           <p>Precio: ${item.price}</p>
           <button onClick={() => agregarAlCarrito(item)}>Agregar más</button>
           <button onClick={() => eliminarDelCarrito(item.id)}>Eliminar uno</button>
+          
         </div>
       ))}
       <h2>Total de productos: {totalProductos}</h2>
