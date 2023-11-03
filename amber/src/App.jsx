@@ -7,8 +7,9 @@ import CartWidget from './components/cartWidget/cartWidget';
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
+  const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
   const [products, setProducts] = useState([
+    
     {
       id: 1,
       title: 'Taza de El grinch',
@@ -16,7 +17,7 @@ function App() {
       price: 4500,
       category: 'Tazas de ceramica',
       image: 'https://i.pinimg.com/564x/96/72/1f/96721fefea99d090530cae6364910aa1.jpg',
-      details: '¡Lleva la diversión y el espíritu navideño del Grinch a tu rutina diaria con esta encantadora taza! La "Taza de El Grinch" es la compañera perfecta para tu café matutino o tu bebida caliente favorita durante la temporada navideña. Con un diseño vibrante y festivo que presenta al gruñón pero entrañable Grinch junto a elementos icónicos de la historia, como el árbol de Navidad robado y su querida mascota Max, esta taza seguramente hará que tu corazón crezca tres tallas en alegría.'
+      details: '¡Lleva la diversión y el espíritu navideño del Grinch a tu rutina diaria con esta encantadora taza! La "Taza de El Grinch" es la compañera perfecta para tu café matutino o tu bebida caliente favorita durante la temporada navideña. Con un diseño vibrante y festivo que presenta al gruñón pero entrañable Grinch junto a elementos icónicos de la historia.'
       },
       {
       id: 2,
@@ -68,10 +69,12 @@ function App() {
     return [...carritoActual];
     });
   }
+
   function eliminarDelCarrito(idProducto) {
   setCart((carritoActual) => {
     
     const productoEnCarrito = carritoActual.find((item) => item.id === idProducto);
+
 if (productoEnCarrito) {
       if (productoEnCarrito.quantity > 1) {
         productoEnCarrito.quantity -= 1;
@@ -82,6 +85,7 @@ if (productoEnCarrito) {
 return [...carritoActual];
   });
 }
+
 return (
   <div>
     <Routes>

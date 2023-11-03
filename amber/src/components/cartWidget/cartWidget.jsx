@@ -11,7 +11,7 @@ function CartWidget({ itemCount }) {
   return (
     <button className="cart-button" onClick={handleClick}>
       <FaShoppingCart size={24} />
-      <span>{itemCount}</span>
+      <span>{itemCount}</span> 
     </button>
   );
 }
