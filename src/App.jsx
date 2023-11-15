@@ -17,6 +17,7 @@ function App() {
       price: 4500,
       category: 'Tazas de ceramica',
       image: 'https://i.pinimg.com/564x/96/72/1f/96721fefea99d090530cae6364910aa1.jpg',
+      stock:10,
       details: '¡Lleva la diversión y el espíritu navideño del Grinch a tu rutina diaria con esta encantadora taza! La "Taza de El Grinch" es la compañera perfecta para tu café matutino o tu bebida caliente favorita durante la temporada navideña. Con un diseño vibrante y festivo que presenta al gruñón pero entrañable Grinch junto a elementos icónicos de la historia.'
       },
       {
@@ -26,6 +27,7 @@ function App() {
       price: 3900,
       category: 'Tazas de ceramica',
       image: 'https://i.pinimg.com/564x/6a/37/2e/6a372e6a90f4422552fc8031797361fe.jpg',
+      stock: 7,
       details: 'Fabricada con materiales de alta calidad, esta taza es resistente y duradera, lo que la hace apta para un uso diario y una excelente adición a tu colección de tazas. Ya sea que la uses en casa, en la oficina o la exhibas en tu vitrina, esta "Taza de Mickey Mouse" es un tributo a un ícono de la animación y una forma encantadora de inyectar un poco de alegría de Disney en tu vida cotidiana.'
     },
     {
@@ -35,6 +37,7 @@ function App() {
       price: 4500,
       category: 'Tazas de ceramica',
       image: 'https://i.pinimg.com/564x/fe/bd/47/febd478f65af30349639515aaecb4fee.jpg',
+      stock: 5,
       details: 'Fabricada con materiales de alta calidad, esta taza es resistente y duradera, lo que la hace adecuada para un uso diario y un valioso elemento de tu colección de tazas. Ya sea que la uses en casa mientras te relajas con un buen libro o en la oficina para alegrar tu día, esta "Taza de Winnie Pooh" es una manera encantadora de recordar los valores y las aventuras de este entrañable personaje.'
     },
     {
@@ -44,6 +47,7 @@ function App() {
       price: 3500,
       category: 'Tazas de vidrio',
       image: 'https://i.pinimg.com/564x/08/4d/22/084d22a5e3ca00e4d4e417dc89e341ff.jpg',
+      stock: 3,
       details: 'La transparencia del vidrio permite apreciar la apariencia de tus bebidas y disfrutar de la danza de colores a medida que se mezclan con el líquido. Además, su asa ergonómica facilita su agarre y la hace cómoda de sostener.'
     },
     {
@@ -53,6 +57,7 @@ function App() {
       price: 4000,
       category: 'Tazas de Porcelana',
       image: 'https://i.pinimg.com/564x/c2/24/71/c2247199135f3d899a198bc0efdb7c00.jpg',
+      stock: 8,
       details: 'El diseño de la taza presenta un patrón floral de margaritas en colores vivos y detalles intrincados, que evocan la belleza de un jardín en plena primavera. La porcelana de alta calidad le confiere un aspecto elegante y una sensación suave al tacto. Su capacidad generosa es perfecta para servir margaritas heladas, cócteles u otras bebidas refrescantes.'
     }
   ]);

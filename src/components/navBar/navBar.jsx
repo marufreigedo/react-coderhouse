@@ -13,6 +13,8 @@ const categories = [
   { name: 'Todos los productos', path: '/category/todos-los-productos' },
 ];
 
+
+
 function NavBar({ onCategorySelect, itemCount }) {
   return (
     <Navbar bg="dark" variant="dark">
