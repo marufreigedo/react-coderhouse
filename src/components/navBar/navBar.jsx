@@ -19,9 +19,11 @@ function NavBar({ onCategorySelect, itemCount }) {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand>
-          <Image src="/src/assets/image/amber2.png" alt="" width={100} />
-        </Navbar.Brand>
+      <Navbar.Brand>
+         <Link to="/">
+        <Image src="/src/assets/image/amber2.png" alt="" width={100} />
+         </Link>
+      </Navbar.Brand>
         <Nav className="me-auto">
           {categories.map((category, index) => (
             <Nav.Link key={index} as={Link} to={category.path} onClick={() => onCategorySelect(category.name)}>
