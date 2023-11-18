@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import Cart from './components/cart/cart';
-import CartWidget from './components/cartWidget/cartWidget';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -101,7 +100,7 @@ return (
       
       <Route path="/cart" element={<Cart cart={cart} eliminarDelCarrito={eliminarDelCarrito} />} />
     </Routes>
-    <CartWidget itemCount={itemCount} /> 
+    
   </div>
 );
 }
