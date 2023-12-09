@@ -1,32 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase/client';
+import ItemDetail from '../itemDetail/itemDetail';
 
-import './itemDetailContainer.css';
+const ItemDetailContainer = () => {
+  const { categoryId } = useParams();
+  const [item, setItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  const getProductFromFirebase = async () => {
+    try {
+      console.log('categoryId del producto:', categoryId);
 
-function ItemDetailContainer({ products }) {
-  const { itemid } = useParams();
-  const [product, setProduct] = useState(null);
+      const productsCollection = collection(db, 'products');
+      const querySnapshot = await getDocs(
+        query(productsCollection, where('categoryId', '==', categoryId))
+      );
+
+      if (!querySnapshot.empty) {
+        const productDocSnap = querySnapshot.docs[0];
+        const productData = { id: productDocSnap.id, ...productDocSnap.data() };
+        setItem(productData);
+      } else {
+        console.log('No se encontró el producto con categoryId:', categoryId);
+      }
+    } catch (error) {
+      console.error('Error fetching product:', error);
+
+    
+      console.log('Error details:', error.message, error.code);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const productMatch = products.find((item) => item.id === Number(itemid));
-    setProduct(productMatch);
-  }, [itemid, products]);
+    getProductFromFirebase();
+  }, [categoryId]);
 
   return (
     <div>
-      {product ? (
-        <div>
-          <h1>{product.title}</h1>
-          <p>{product.description}</p>
-          <p>Precio: ${product.price}</p>
-          <p>Detalles: {product.details}</p>
-        </div>
-      ) : (
-        <p>Producto no encontrado</p>
-      )}
+      {isLoading ? 'Cargando...' : (item ? <ItemDetail item={item} /> : 'Producto no encontrado')}
     </div>
   );
-}
+};
 
 export default ItemDetailContainer;

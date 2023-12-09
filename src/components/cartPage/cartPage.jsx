@@ -1,19 +1,22 @@
-import React from 'react';
+
+import React, { useContext } from 'react';
+import { CartContext } from '../cartContext/cartContext';
 import { useNavigate } from 'react-router-dom';
 
-function CartPage({ cart, eliminarDelCarrito }) {
+function CartPage() {
+  const { cart, eliminarDelCarrito } = useContext(CartContext);
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/'); 
+    navigate('/');
   };
 
   return (
     <div>
-      {cart.map((producto, index) => (
-        <div key={index}>
-          <h2>{producto.nombre}</h2>
-          <p>{producto.descripcion}</p>
+      {cart.map((producto) => (
+        <div key={producto.id}>
+          <h2>{producto.name}</h2>
+          <p>{producto.description}</p>
           <button onClick={() => eliminarDelCarrito(producto.id)}>Eliminar del carrito</button>
         </div>
       ))}

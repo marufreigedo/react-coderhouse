@@ -1,12 +1,19 @@
-import React from 'react';
-import './cart.css';
+import { useContext } from 'react';
+import { CartContext } from '../cartContext/cartContext';
 
-function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
+function Cart() {
+  const { cart, setCart } = useContext(CartContext);
 
   const totalProductos = cart.reduce((total, producto) => total + producto.quantity, 0);
-
-  
   const totalPrecio = cart.reduce((total, producto) => total + producto.price * producto.quantity, 0);
+
+  const agregarAlCarrito = (item) => {
+    
+  };
+
+  const eliminarDelCarrito = (id) => {
+  
+  };
 
   return (
     <div className="cart">
@@ -19,7 +26,6 @@ function Cart({ cart, agregarAlCarrito, eliminarDelCarrito }) {
           <p>Precio: ${item.price}</p>
           <button onClick={() => agregarAlCarrito(item)}>Agregar más</button>
           <button onClick={() => eliminarDelCarrito(item.id)}>Eliminar uno</button>
-          
         </div>
       ))}
       <h2>Total de productos: {totalProductos}</h2>

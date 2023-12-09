@@ -1,7 +1,7 @@
+
 import React from 'react';
 import { Navbar, Nav, Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './navBar.css';
 import { Link } from 'react-router-dom';
 import CartWidget from '../cartWidget/cartWidget';
 
@@ -13,17 +13,15 @@ const categories = [
   { name: 'Todos los productos', path: '/category/todos-los-productos' },
 ];
 
-
-
 function NavBar({ onCategorySelect, itemCount }) {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-      <Navbar.Brand>
-         <Link to="/">
-        <Image src="/src/assets/image/amber2.png" alt="" width={100} />
-         </Link>
-      </Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/">
+            <Image src="/src/assets/image/amber2.png" alt="" width={100} />
+          </Link>
+        </Navbar.Brand>
         <Nav className="me-auto">
           {categories.map((category, index) => (
             <Nav.Link key={index} as={Link} to={category.path} onClick={() => onCategorySelect(category.name)}>
@@ -36,6 +34,5 @@ function NavBar({ onCategorySelect, itemCount }) {
     </Navbar>
   );
 }
-
 
 export default NavBar;
