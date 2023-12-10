@@ -23,7 +23,7 @@ function ItemList({ onAddToCart }) {
   return (
     <div>
       {products.map((product) => (
-        <Card key={product.id}>
+        <Card key={product.id}> 
           <Card.Img variant="top" src={product.image} />
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
@@ -35,6 +35,7 @@ function ItemList({ onAddToCart }) {
       ))}
     </div>
   );
+  
 }
 
 export default ItemList;

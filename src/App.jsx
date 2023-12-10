@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { CartProvider } from './components/cartContext/cartContext';
 import ItemListContainer from './components/itemListContainer/itemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
@@ -55,10 +54,22 @@ function App() {
   return (
     <CartProvider>
       <Routes>
-        <Route path="/" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path="/item/:id" element={<ItemDetailContainer products={products} />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/category/:categoryid" element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />} />
+        <Route
+          path="/"
+          element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/item/:id"
+          element={<ItemDetailContainer products={products} />}
+        />
+        <Route
+          path="/cart"
+          element={<Cart />}
+        />
+        <Route
+          path="/category/:categoryid"
+          element={<ItemListContainer products={products} agregarAlCarrito={agregarAlCarrito} />}
+        />
       </Routes>
     </CartProvider>
   );
